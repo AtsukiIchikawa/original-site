@@ -1,0 +1,7 @@
+<h1>Contents</h1>
+<% @page_content.each do |content|%>
+    <p><a href="/contents/<%= content.id %>"><%= content.pagetitle %></a></p>
+<% end %>
+
+<p><%= @page_content[1].id%></p>
+<p><a href="/">TOPへ戻る</a><p>
