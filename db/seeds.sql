@@ -4,10 +4,3 @@ create table contents (
     pagetitle text,
     body text
 );
-
-drop table if exists users;
-create table users (
-    id integer primary key,
-    username text,
-    password text
-);

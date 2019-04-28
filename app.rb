@@ -8,8 +8,6 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_relative 'models/content'
-require_relative 'models/user'
-
 
 get '/' do
     @title = "Site Top"
@@ -24,19 +22,6 @@ end
 post '/create' do
     Content.create(pagetitle: params[:pagetitle], body: params[:body])
     redirect to('/contents')
-end
-
-get '/user/index' do
-    erb :userregistration
-end
-
-get '/user/create' do
-    erb :usercreate
-end
-
-post '/user/create' do
-    User.create(username: params[:username], password: params[:password])
-    redirect to('/user/index')
 end
 
 get '/about' do
