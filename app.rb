@@ -4,13 +4,11 @@ require 'active_record'
 
 ActiveRecord::Base.establish_connection(
     adapter: 'sqlite3',
-    database: './db/pagecontents.db'
+    database: './db/myapp.db'
 )
 
-class Content < ActiveRecord::Base
-    validates :pagetitle, presence: true
-    validates :body, presence: true
-end
+require_relative 'models/content'
+require_relative 'models/user'
 
 
 get '/' do
@@ -28,24 +26,33 @@ post '/create' do
     redirect to('/contents')
 end
 
+get '/user/index' do
+    erb :userregistration
+end
+
+get '/user/create' do
+    erb :usercreate
+end
+
+post '/user/create' do
+    User.create(username: params[:username], password: params[:password])
+    redirect to('/user/index')
+end
+
 get '/about' do
     @title = "How To Use"
     erb :about
 end
 
-get '/contents/:content_id' do |id|
-    @new_content = Content.all[id.to_i - 1].body
+get '/contents/:content_title' do |t|
+    content = Content.find_by_pagetitle(t)
+    @new_content = content.body.gsub(/(\r\n|\r|\n)/, "<br>")
+    p @new_content
     erb :newcontent
 end
 
-get '/test/1' do
-    p Content.all[1].body
+get '/contents/:content_title/delete' do |t|
+    Content.find_by_pagetitle(t).destroy
+    p "title：#{t} が削除されました"
+    erb :deleted
 end
-
-
-#post '/new_page' do
-#    @title = params['title']
-#    @content = params['content'].gsub(/(\r\n|\r|\n)/, "<br>")
-#    p @title
-#    p @content
-#end

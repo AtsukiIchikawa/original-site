@@ -5,5 +5,9 @@ create table contents (
     body text
 );
 
-insert into contents (pagetitle, body) values('title1', 'content1');
-insert into contents (pagetitle, body) values('title2', 'content2');
+drop table if exists users;
+create table users (
+    id integer primary key,
+    username text,
+    password text
+);

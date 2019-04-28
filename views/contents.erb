@@ -1,7 +1,12 @@
 <h1>Contents</h1>
+<div class="container">
 <% @page_content.each do |content|%>
-    <p><a href="/contents/<%= content.id %>"><%= content.pagetitle %></a></p>
+    <p class="pagetitle"><%= content.pagetitle %></p>
+    <p><a href="/contents/<%= content.pagetitle %>">開く</a></p>
+    <p><a href="/contents/<%= content.pagetitle %>/delete">削除する</a></p>
+    <br><hr><br>
 <% end %>
-
-<p><%= @page_content[1].id%></p>
+</div>
+<br><br>
+<hr>
 <p><a href="/">TOPへ戻る</a><p>

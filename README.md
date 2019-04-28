@@ -1,1 +1,1 @@
-現在作成中です
+practice Routing, Template Engine, and DB by using lightweight framework 'Sinatra'

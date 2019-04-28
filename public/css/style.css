@@ -1,5 +1,12 @@
 @charset "utf-8";
 
 body { 
-    margin: auto 20% auto;
+    margin: 2.5% 20%;
+}
+.container {
+    margin: 7% auto;
+}
+
+p.pagetitle {
+    font-size: 30px;
 }
